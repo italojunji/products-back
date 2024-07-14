@@ -25,9 +25,17 @@ public class Product {
     @Column(name = "price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
-    @Column(name = "categoryPath", nullable = false)
-    private IndicatorCategory category;
+    @Column(name = "categoryIndicator", nullable = false)
+    private IndicatorCategory categoryIndicator;
 
     @Column(name = "available", nullable = false)
     private Boolean available;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+//    public String getCategory() {
+//        return category.getName();
+//    }
 }
