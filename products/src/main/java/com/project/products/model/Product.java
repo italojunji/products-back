@@ -25,9 +25,6 @@ public class Product {
     @Column(name = "price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
-    @Column(name = "categoryIndicator", nullable = false)
-    private IndicatorCategory categoryIndicator;
-
     @Column(name = "available", nullable = false)
     private Boolean available;
 
@@ -35,7 +32,4 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-//    public String getCategory() {
-//        return category.getName();
-//    }
 }

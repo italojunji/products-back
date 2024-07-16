@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.util.Arrays;
 
 @Getter
+@Deprecated
 public enum IndicatorCategory {
     FRUITS(1),
     VEGETABLES(2),
