@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/products")
@@ -19,6 +20,13 @@ public class ProductController {
     @Autowired
     public ProductController(ProductService service) {
         this.service = service;
+    }
+
+    @GetMapping (value = "/{id}")
+    public ResponseEntity<Object> getProductById(@PathVariable("id") Long id){
+        Optional<Product> productsFound = service.findById(id);
+        return productsFound.<ResponseEntity<Object>>map(ResponseEntity::ok).orElseGet(() ->
+                ResponseEntity.status(HttpStatus.NO_CONTENT).body(String.format("There is no product with id '%s'", id)));
     }
 
     @GetMapping
@@ -54,7 +62,7 @@ public class ProductController {
     }
 
     @DeleteMapping (value = "/{id}")
-    private ResponseEntity<Object> deleteProduct(@PathVariable ("id") Long id){
+    private ResponseEntity<Object> deleteProduct(@PathVariable("id") Long id){
         try {
             service.deleteById(id);
             return ResponseEntity.ok(service.findById(id).isPresent());
