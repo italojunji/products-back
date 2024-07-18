@@ -29,7 +29,7 @@ public class Product {
     private Boolean available;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "categoryId")
     private Category category;
 
 }
