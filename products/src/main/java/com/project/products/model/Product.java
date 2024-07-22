@@ -2,6 +2,7 @@ package com.project.products.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -9,6 +10,7 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name = "products_tb")
+@EqualsAndHashCode
 public class Product {
 
     @Id

@@ -2,6 +2,7 @@ package com.project.products.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.Set;
@@ -9,6 +10,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "categories_tb")
+@EqualsAndHashCode//(exclude = {"children"})
 public class Category {
 
     @Id
